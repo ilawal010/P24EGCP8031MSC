@@ -231,7 +231,7 @@ if st.button("Run Advanced Research Benchmarks"):
         st.download_button("Download Optimized Multiplier Map CSV", csv_map, "MPC_Optimized_Multiplier_Map.csv", "text/csv")
         
         st.markdown("---")
-        st.subheader("🗺️ Injector Multiplier Map Matrix Visualization (Section 4.5 Map Layout)")
+        st.subheader("Injector Multiplier Map Matrix Visualization")
         
         # New side-by-side comparative multiplier maps added here safely
         col_m1, col_m2 = st.columns(2)
@@ -262,7 +262,7 @@ if st.button("Run Advanced Research Benchmarks"):
             st.pyplot(fig_m2)
 
     with tab_tuning:
-        st.subheader("🔧 Horizon Weight Parameter Optimization Curves (Section 4.4)")
+        st.subheader("🔧 Horizon Weight Parameter Optimization Curves")
         col_t1, col_t2 = st.columns(2)
         
         with col_t1:
