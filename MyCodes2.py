@@ -4,6 +4,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import casadi as ca
 
+
+# Backward-compatibility alias for NumPy 2.0+
+if not hasattr(np, 'trapz'):
+    np.trapz = np.trapezoid
+    
 st.set_page_config(layout="wide")
 st.title("MODEL PREDICTIVE CONTROL STRATEGY FOR ENERGY-OPTIMIZATION IN COMPRESSED NATURAL GAS (CNG) CONVERTED VEHICLES IN NIGERIA")
 st.markdown("##### Research Framework: Model Predictive Control vs. Baseline Automotive Fuel Trim Calibration Systems")
