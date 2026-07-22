@@ -6,7 +6,7 @@ import casadi as ca
 
 st.set_page_config(layout="wide")
 st.title("MODEL PREDICTIVE CONTROL STRATEGY FOR ENERGY-OPTIMIZATION IN COMPRESSED NATURAL GAS (CNG) CONVERTED VEHICLES IN NIGERIA")
-st.markdown("##### Research Framework: 5-State Linearized State-Space MPC vs. Baseline Fuel Calibration")
+st.markdown("##### Linearized State-Space MPC vs. Baseline Fuel Calibration")
 
 # ================= 1. USER CONFIGURATIONS & SIDEBARS =================
 st.sidebar.header("1. Plant & Engine Labs")
@@ -26,7 +26,7 @@ inj_step  = st.sidebar.number_input("Base Pulse Step (ms)", 0.5, 5.0, 1.0)
 inj_grid_ms = np.arange(inj_start, inj_end + inj_step, inj_step)
 
 st.sidebar.header("3. Control System References")
-AFR_ref = st.sidebar.number_input("Target Stoichiometric AFR (λ=1.0)", 14.0, 18.0, 16.5)
+AFR_ref = st.sidebar.number_input("Target Stoichiometric AFR (λ=1.0)", 14.0, 18.0, 17.5)
 drive_cycle = st.sidebar.selectbox("Test Driving Scenario / Profile", 
     ["Idle Stability", "Urban Stop-and-Go", "Highway Cruising", "Aggressive Transients", "Hill Climbing Heavy Load"])
 
