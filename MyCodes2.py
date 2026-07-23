@@ -210,7 +210,8 @@ def execute_comparative_simulation(time_steps=150, dt=0.02):
     return time_arr, d_profile, x_mpc, u_mpc, x_pid, u_pid, stft, ltft
 
 # ================= 4. ADVANCED METRICS CALCULATOR =================
-
+# Create a fallback function for numerical integration
+trapz = getattr(np, 'trapezoid', getattr(np, 'trapz', None))
 def compute_academic_metrics(time, state_mat, u_mat, target_afr, target_torque=150.0):
     dt = time[1] - time[0]
     afr_data = state_mat[2, :]
@@ -220,10 +221,13 @@ def compute_academic_metrics(time, state_mat, u_mat, target_afr, target_torque=1
     errors = afr_data - target_afr
     abs_errors = np.abs(errors)
     
+    # Universal integration fix across NumPy 1.x and 2.x
+    trapz = getattr(np, 'trapezoid', getattr(np, 'trapz', None))
+    
     rmse = np.sqrt(np.mean(errors**2))
-    iae = np.trapz(abs_errors, dx=dt)
-    ise = np.trapz(errors**2, dx=dt)
-    itae = np.trapz(time * abs_errors, dx=dt)
+    iae = trapz(abs_errors, dx=dt)
+    ise = trapz(errors**2, dx=dt)
+    itae = trapz(time * abs_errors, dx=dt)
     
     avg_pw = np.mean(u_data * 1000.0)
     variance_pw = np.var(u_data * 1000.0)
